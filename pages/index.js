@@ -14,7 +14,8 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 import { Logo } from '../components'
-import firebase from '../config/firebase'
+import firebase, { persistenceMode } from '../config/firebase'
+import { useEffect } from 'react'
 
 
 const validationSchema = yup.object().shape({
@@ -33,6 +34,7 @@ export default function Home() {
     isSubmitting
   } = useFormik({
     onSubmit: async ( values, form) => {
+      firebase.auth().setPersistence(persistenceMode)
       try {
         const user = await firebase.auth().signInWithEmailAndPassword(values.email, values.password)
         console.log(user)
@@ -48,6 +50,9 @@ export default function Home() {
     }
 
   })
+
+
+
   return (
     <Container p={4} centerContent>
       <Logo />
