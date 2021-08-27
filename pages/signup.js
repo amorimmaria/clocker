@@ -17,7 +17,7 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 import { Logo } from '../components'
-import firebase from '../config/firebase'
+import { firebaseClient } from '../config/firebase'
 
 
 const validationSchema = yup.object().shape({
