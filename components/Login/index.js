@@ -14,7 +14,7 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 import { Logo } from '../Logo'
-import { firebaseClient,  persistenceMode } from '../../config/firebase'
+import { firebaseClient,  persistenceMode } from '../../config/firebase/client'
 import { useEffect } from 'react'
 
 
