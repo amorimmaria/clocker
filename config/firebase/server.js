@@ -1,5 +1,5 @@
 
-import firebaseServer from 'firebase-firebase-admin'
+import firebaseServer from 'firebase-admin'
 
 const app =  firebaseServer.apps.length
   ? firebaseServer.app()
