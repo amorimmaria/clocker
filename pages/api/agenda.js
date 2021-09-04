@@ -12,7 +12,7 @@ export default async (req, res) => {
     const { user_id } = await firebaseServer.auth().verifyIdToken(token)
     
     const snapshot = await agenda
-      .where('userID', '==', user_id)
+      .where('userId', '==', user_id)
       .where('when', '==', req.query.when)
       .get()
 

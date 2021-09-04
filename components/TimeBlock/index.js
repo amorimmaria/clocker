@@ -1,6 +1,7 @@
-import { Children, useState } from 'react'
+import {  useState } from 'react'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import axios from 'axios'
 import { Button, 
          Modal, 
          ModalBody, 
@@ -13,6 +14,15 @@ import { Button,
 
 import { Input } from '../Input'
 
+
+const setSchedule = async data => axios({
+  method: 'post',
+  url: '/api/schedule',
+  data: { 
+    ...data,
+    username: window.location.pathname.replace('/', ''),
+  },
+})
 
 const ModalTimeBlock = ({ isOpen, onClose, onComplete, children }) => (
   <Modal isOpen={isOpen} onClose={onClose}>
@@ -39,7 +49,7 @@ export const  TimeBlock = ({ time }) => {
   const toggle = () => setIsOpen(prevState => !prevState)
 
   const { values, handleSubmit, handleChange, errors, touched , handleBlur} = useFormik({
-    onSubmit: () => {},
+    onSubmit: (values) => setSchedule({...values, when: time}),
     initialValues: {
       name: '',
       phone: ''
