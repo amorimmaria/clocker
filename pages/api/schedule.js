@@ -32,10 +32,10 @@ const setSchedule = async (req, res) => {
   const doc = await agenda.doc(`${userId}#${req.body.when}`).get()
 
   if (doc.exists) {
-    return res.status(400)
+    return res.status(400).json({ message: 'Timed Block'})
   }
 
-   agenda.doc(`${userId}#${req.body.when}`).set({
+  const block = await agenda.doc(`${userId}#${req.body.when}`).set({
     userId,
     when: req.body.when,
     name: req.body.name,
@@ -44,7 +44,7 @@ const setSchedule = async (req, res) => {
 
   })
 
-  return res.status(200)
+  return res.status(200).json(block)
 }
 
 const getSchedule = (req, res) => {
