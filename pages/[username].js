@@ -8,7 +8,6 @@ import { ChevronLeftIcon, ChevronRightIcon} from '@chakra-ui/icons'
 import { Box, Button, Container, IconButton, SimpleGrid, Spinner } from '@chakra-ui/react'
 
 import { useAuth, Logo, formatDate, TimeBlock } from '../components'
-import { redirect } from 'next/dist/server/api-utils'
 
 const getSchedule = async ({ when, username }) => axios({
     method: 'get',

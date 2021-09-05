@@ -21,7 +21,7 @@ const getUserId = async (username) => {
     .where('username', '==', username)
     .get()
 
-  if (!rofileDoc.docs.lenght) {
+  if (!profileDoc.docs.length) {
     return false
   }
 
