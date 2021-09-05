@@ -96,14 +96,16 @@ export const  TimeBlock = ({ time, date, disabled }) => {
             <Input
               label="Telefone:"
               name="phone" 
+              mask={['(99) 9999-9999', '(99) 9 9999-9999' ]}
               error={errors.phone}
               value={values.phone} 
-              placeholder="(00) 9 9999-9999" 
+              placeholder="(99) 9 9999-9999" 
               onChange={handleChange} 
               onBlur={handleBlur}
-              size="lg" 
+              size="lg"
+              mt={4}  
               disabled={isSubmitting}
-              mt={4} 
+             
             />
           </>
       </ModalTimeBlock>}
