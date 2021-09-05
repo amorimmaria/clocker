@@ -39,7 +39,8 @@ const setSchedule = async (req, res) => {
   const doc = await agenda.doc(docId).get()
 
   if (doc.exists) {
-    return res.status(400).json({ message: 'Time Blocked!' })
+     res.status(400).json({ message: 'Time Blocked!' })
+     return
   }
 
   const block = await agenda.doc(docId).set({
