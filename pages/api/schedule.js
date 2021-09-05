@@ -21,6 +21,10 @@ const getUserId = async (username) => {
     .where('username', '==', username)
     .get()
 
+  if (!rofileDoc.docs.lenght) {
+    return false
+  }
+
   const { userId } = profileDoc.docs[0].data()
 
   return userId
@@ -55,6 +59,11 @@ const getSchedule = async (req, res) => {
   try{
     
     const userId = await getUserId(req.query.username)
+
+    if (!userId) {
+      return res.status(404).json({ message: 'Invalid username!'})
+    }
+
 
     const snapshot = await agenda
       .where('userId', '==', userId)
